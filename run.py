@@ -5,8 +5,7 @@ scores ={"computer": 0, "player": 0}
 
 class board:
 
-
-
+    """Board Class"""
 
     def __init__(self, size, num_ships, names, type):
         self.size = size
@@ -49,6 +48,59 @@ def random_number(size):
     return randint(0, (size) - 1)
         
 
+def valid_coordinates(x, y, board):
+     
+     """Validating coordinates"""
+     try:
+         if _x in range(board.size) and _y in range(board.size):
+            return True
+         else:
+            raise ValueError(
+                f"Value Must be between 0 and {board.size}")
+        except ValueError as _e:
+        print(f"Invalid data: {_e}, please try again\n")
+        return False
 
 
 
+def populate_board(board):
+
+
+
+def make_guess(board):
+
+
+
+def play_game(computer_board, player_board):
+
+
+
+def new_game():
+    """
+    New game. Sets the number of ship and size of the board, resets ther scores and starts the board.
+    """
+
+
+    size = 5
+    num_ships = 4
+    scores["computer"] = 0
+    scores["player"] = 0
+    print("-" * 30)
+    print(" Welcome to BATTLESHIPS for Dummies!!")
+    print(" Board Size: 5. Number of ships: 4")
+    print(" Top left corner is row: 0, col: 0")
+    print("-" * 30)
+    player_name = input("Please enter your name: \n")
+    print("-" * 30)
+
+
+    player_board = Board(size, player_name, "player", num_ships)
+    computer_board = Board(size, "computer", "computer", num_ships)
+
+    for _ in range(num_ships):
+        populate_board(player_board)
+        populate_board(computer_board)
+    
+    play_game(player_board, computer_board)
+
+new_game()
