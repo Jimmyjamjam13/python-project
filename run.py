@@ -58,12 +58,26 @@ def valid_coordinates(x, y, board):
             raise ValueError(
                 f"Value Must be between 0 and {board.size}")
         except ValueError as _e:
-        print(f"Invalid data: {_e}, please try again\n")
+            print(f"Invalid data: {_e}, please try again\n")
         return False
 
 
 
 def populate_board(board):
+    
+    """populating the board"""
+    
+    print(f"{board.name}'s board:\n")
+
+    size = board.size
+
+    while len(board.ships) != board.ship_nums:
+        x = random_number(size)
+        y = random_number(size)
+        board.add_ships(x, y)
+
+    board.print_board()
+    print(board.ships)
 
 
 
