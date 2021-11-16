@@ -62,7 +62,6 @@ def valid_coordinates(x, y, board):
         return False
 
 
-
 def populate_board(board):
     
     """populating the board"""
@@ -80,14 +79,50 @@ def populate_board(board):
     print(board.ships)
 
 
-
 def make_guess(board):
+    
+    """generates random x and y values for computer.player inputs row and col is requested."""
+    
+    size = board.size
 
+    while True:
+        if board.type == 'computer':
+            print("Computer's turn to guess")
+            row_guess = random_number(board.size)
+            col_guess = random_number(board.size)
+        else:
+            row_guess = input('Enter row num:\n')
+            col_guess = input('Enter column num:\n')
+            
+        row = validate_user_data(str(row_guess), 0, size)
+        col = validate_user_data(str(col_guess), 0, size)
 
+        if row and col:
+            break
 
+    return [int(row_guess), int(col_guess)]
+    
 def play_game(computer_board, player_board):
+    
+    populate_game_board(board)
+    print('~' * 60)
+    populate_game_board(other_board)
+    player_guess = make_guess(board)
+    p_row = player_guess[0]
+    p_col = player_guess[1]
+    validate_guess(board, other_board, p_row, p_col)
 
+    comp_guess = make_guess(other_board)
+    c_row = comp_guess[0]
+    c_col = comp_guess[1]
+    validate_guess(other_board, board, c_row, c_col)
 
+    if len(other_board.guesses) == ships:
+            break
+
+print('finished game')
+
+   
 
 def new_game():
     """
