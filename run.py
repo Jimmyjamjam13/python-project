@@ -51,14 +51,27 @@ def random_number(size):
 
 
 def valid_coordinates(x, y, board):
+    return [['O' for count in range(board)] for count in range(board)]
 
 
 def populate_board(board):
+    
+    """Populates game board for each player, one for the user
+    and one for the computer."""
+    
+    print(f"{board.name}'s board:\n")
+
+    size = board.size
+
+    while len(board.ships) != board.ship_nums:
+        x = random_number(size)
+        y = random_number(size)
+        board.add_ships(x, y)
+
+    board.print_board()
+    print(board.ships)
+
 
 
 def make_guess(board):
-
-
 def play_game(board, other_board, ships):
-
-
